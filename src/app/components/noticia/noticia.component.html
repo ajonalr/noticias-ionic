@@ -5,11 +5,21 @@
       <span class="text-primary">{{index + 1}}. </span>
       <span>{{noticias.source.name}}</span>
 
+      <div class="noticia-more">
+
+        <ion-button (click)="presentActionSheet()" fill="clear">
+
+          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+
+        </ion-button>
+
+      </div>
+
     </ion-card-subtitle>
-    <ion-card-title>{{noticias.title}}</ion-card-title>
+    <ion-card-title (click)="arbirNoticia()">{{noticias.title}}</ion-card-title>
   </ion-card-header>
 
-  <ion-img *ngIf="noticias.urlToImage" [src]="noticias.urlToImage"></ion-img>
+  <ion-img (click)="arbirNoticia()" *ngIf="noticias.urlToImage" [src]="noticias.urlToImage"></ion-img>
 
   <ion-card-content>
     <p>{{noticias.description}}</p>

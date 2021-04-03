@@ -9,13 +9,24 @@ import { ResponseTopHedlines } from '../models/Noticia.mode';
 export class NoticiasService {
 
   api_key = environment.apiKey;
+  pageNumber = 0;
 
   constructor(
     private http: HttpClient
   ) { }
 
   getTopHetlines() {
-    return this.http.get<ResponseTopHedlines>(`http://newsapi.org/v2/everything?q=tesla&from=2021-01-27&sortBy=publishedAt&apiKey=${this.api_key}`)
+
+    this.pageNumber ++;    
+
+    return this.http.get<ResponseTopHedlines>(`http://newsapi.org/v2/everything?q=apple&from=2021-03-13&to=2021-03-13&sortBy=popularity&page=${this.pageNumber}&apiKey=${this.api_key}`)
     
+  }
+
+
+  getTopHeadLineCategoria(categoria: string) {
+
+    return this.http.get<ResponseTopHedlines>(`https://newsapi.org/v2/top-headlines?country=de&category=${categoria}&apiKey=${this.api_key}`)
+
   }
 }
